@@ -1,395 +1,827 @@
 <!DOCTYPE html>
-  <html lang="en">
+<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>South Indian Thali 2.0</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" type="image/png" href="./GQC Logo (5).png">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap"
-      rel="stylesheet">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;1,200&display=swap"
-      as="style">
-    <style>
-      /* Reset some default browser styles */
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background: transparent;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap"
+    rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;1,200&display=swap"
+    as="style">
+  <link rel="icon" type="image/png" href="./GQC Logo (5).png">
+  <style>
+    /* Reset some default browser styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: transparent;
+      box-sizing: border-box;
+
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 140px;
+      /* Adjust the value based on the height of your navbar */
+
+    }
+
+
+    /* Apply linear gradient to the whole page */
+    body {
+      font-family: 'Poppins', sans-serif;
+      list-style: none;
+      background: linear-gradient(to right, #D4145A, #FBB03B);
+      min-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      font-weight: bold;
+      font-size: 22px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      box-shadow: 0 8px 8px rgba(0, 0, 0, 0.055);
+      /* Bottom shadow */
+      z-index: 1000;
+      background: linear-gradient(to right, #D4145A, #FBB03B);
+    }
+
+    .event-description {
+      z-index: 10000;
+    }
+
+    .mobile-event-title {
+      display: none;
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: bold;
+    }
+
+    /* Space between the logo and the links */
+    .logo {
+      color: rgb(255, 255, 255);
+      font-size: 40px;
+      margin-right: 40px;
+      /* Add space between logo and links */
+      margin-left: 50px;
+      margin-top: 10px;
+    }
+
+    .logo img {
+      width: 80px;
+      /* Adjust the width as needed */
+      height: auto;
+      /* Maintain aspect ratio */
+      border-radius: 50%;
+      /* Make the image circular */
+      box-shadow: 0 0 1px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6), 0 0 30px rgba(255, 255, 0, 0.4);
+      /* Yellow glow effect */
+      transition: box-shadow 0.3s ease;
+      /* Smooth transition for hover effect */
+    }
+
+    .logo img:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 0, 1), 0 0 30px rgba(255, 255, 0, 0.8), 0 0 40px rgba(255, 255, 0, 0.6);
+      /* Enhanced glow on hover */
+    }
+
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin: 0 30px;
+    }
+
+    .nav-links ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+    }
+
+    .nav-links ul li {
+      margin-left: 20px;
+    }
+
+    .nav-links ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+      /* Required for pseudo-elements */
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      /* Adjust the distance below the link text */
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: white;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-links a:hover {
+      background: linear-gradient(to right, #662D8C, #ED1E79);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links a:hover::before {
+      width: 100%;
+      /* Fully expand the underline */
+      left: 0;
+      /* Reset to align to the start */
+      transform: translateX(0);
+      /* Remove the centering effect */
+    }
+
+    .icons {
+      position: fixed;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 10px;
+      z-index: 100;
+    }
+
+    .icons a {
+      color: white;
+      font-size: 30px;
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .icons a:hover {
+      color: #1d1c1c;
+      transform: translateY(-5%);
+    }
+
+    .main-content {
+      display: flex;
+      /* Use flexbox for side-by-side alignment */
+      justify-content: flex-start;
+      /* Space items apart */
+      align-items: flex-start;
+      /* Align items vertically */
+      gap: 20px;
+      /* Add some space between the two elements */
+      padding: 20px;
+      position: relative;
+      margin-left: 50px;
+      margin-top: -20px;
+    }
+
+    .event-description {
+      padding: 20px;
+      margin: 100px;
+      /* Adds spacing above and below */
+      border-radius: 20px;
+      /* Optional rounded corners */
+
+    }
+
+    .event-description h2 {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      background: linear-gradient(to right, #641b95, #83224c);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: -100px;
+    }
+
+
+    .text-box {
+      flex: 1;
+      /* Allow the text box to grow */
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      color: #f8deb9;
+      /* Text color */
+      border-radius: 10px;
+      font-size: 30px;
+      font-weight: bold;
+      margin: 0;
+      /* Remove extra margins */
+      box-sizing: border-box;
+      /* Include padding in width/height */
+    }
+
+    .text-box,
+    .animation-placeholder {
+      flex: 1;
+      /* Equal space for both elements */
+      transform: translateY(-20px);
+      /* Move elements up by 20px */
+    }
+
+    .text-box p {
+      font-size: 23px;
+      font-family: "Agu Display", serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-variation-settings: "MORF" 0;
+    }
+
+    .text-box h2 {
+      font-family: "Agu Display", serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-variation-settings: "MORF" 0;
+    }
+
+    .text-box-container {
+      display: flex;
+      flex-direction: column;
+      /* Stack items vertically */
+      flex: 1;
+      /* Allow it to grow */
+    }
+
+    .register-btn {
+      margin-top: 20px;
+      /* Add some space above the button */
+    }
+
+    .logo-placeholder {
+      width: 350px;
+      height: 400px;
+      display: block;
+      margin-top: -300px;
+    }
+
+    .animation-placeholder {
+      flex: 1;
+      /* Allow video to grow to the same space as text box */
+      display: flex;
+      align-items: flex-start;
+      /* Align the video to the top */
+    }
+
+    .animation-placeholder video {
+      width: 100%;
+      /* Adjust the width of the video */
+      height: 585px;
+      /* Maintain aspect ratio */
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    /* Center align countdown and register button */
+    .countdown-section {
+      text-align: center;
+      margin-top: 0px;
+      padding: 20px;
+      color: wheat;
+      font-size: larger;
+    }
+
+    /* Container for countdown and button */
+    .countdown-container {
+      display: flex;
+      flex-direction: column;
+      /* Stack items vertically */
+      align-items: center;
+      /* Center items horizontally */
+      gap: 20px;
+      /* Space between countdown and button */
+    }
+
+    /* Countdown timer box */
+    .countdown {
+      background-color: rgba(0, 0, 0, 0.7);
+      /* Light black with transparency */
+      padding: 20px;
+      color: white;
+      font-size: 30px;
+      border-radius: 10px;
+      /* Rounded corners */
+      font-weight: bold;
+    }
+
+    .register-btn {
+      padding: 15px 40px;
+      /* Bigger size for the button */
+      font-family: 'Poppins', sans-serif;
+      font-size: 30px;
+      color: white;
+      background: linear-gradient(to right, #662D8C, #ED1E79);
+      /* Gradient background */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background-size: 200% 100%;
+      /* Increase the background size for smoother transition */
+      transition: background-position 0.6s ease, transform 0.6s ease;
+      /* Transition for background position */
+
+    }
+
+    .register-btn:hover {
+      background-position: right;
+      /* Move the background position on hover */
+      transform: scale(1.05);
+      /* Slight zoom effect on hover */
+    }
+
+
+    .event-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      /* Two columns */
+      gap: 40px;
+      /* Space between blocks */
+      padding: 50px;
+      margin-left: 40px;
+      /* Move everything to the right */
+
+    }
+
+    .event-block {
+      background: rgba(0, 0, 0, 0.8);
+      /* Black with opacity */
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      margin-top: 15px;
+      /* General margin for all blocks */
+    }
+
+    .event-block:nth-child(even) {
+      transform: translateY(110px);
+      /* Move even blocks slightly down */
+    }
+
+    .event-block h3 {
+      margin-bottom: 10px;
+      text-decoration: wavy;
+      background: linear-gradient(to right, #daaf38, #ED1E79);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .event-block p {
+      margin-bottom: 15px;
+      color: #f8deb9;
+    }
+
+
+    .event-block:nth-child(odd) {
+      transform: translateY(0);
+      /* Keep even blocks aligned */
+      margin-top: 15x;
+    }
+
+    .event-block h3 {
+      margin-bottom: 10px;
+    }
+
+    .event-block p {
+      margin-bottom: 15px;
+      line-height: normal;
+    }
+
+    .register-button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      color: white;
+      background: linear-gradient(to right, #662D8C, #ED1E79);
+      /* Gradient background */
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      background-size: 200% 100%;
+      transition: background-position 0.6s ease, transform 0.6s ease;
+    }
+
+    .register-button:hover {
+      background-position: right;
+      transform: scale(1.05);
+    }
+
+    /* Gallery Section Styling */
+    #gallery-section {
+      margin-top: 50px;
+      /* Ensures spacing from previous sections */
+      padding: 50px 20px;
+      background: rgb(208, 78, 214, 0.3);
+    }
+
+    .gallery-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+
+      .gallery-container {
+        background-color: transparent;
+        /* Or match the background color of the page */
       }
 
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 140px;
-        /* Adjust the value based on the height of your navbar */
+    }
 
+    .gallery-container h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: rgba(255, 255, 255);
+    }
+
+    /* Gallery Grid Styling */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      /* Space between images */
+      justify-content: center;
+      align-items: center;
+      padding-left: 20px;
+      /* Adds space between the grid and the left edge */
+      padding-right: 20px;
+      /* Adds space between the grid and the right edge */
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .lazy-image {
+      filter: blur(10px);
+      transition: filter 0.3s ease-out;
+    }
+
+    .lazy-image:has-loaded {
+      filter: blur(0);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Light black background */
+      color: white;
+      /* Text color */
+      padding: 20px;
+      /* Padding around the content */
+      text-align: center;
+      /* Center align the text */
+      position: relative;
+      /* Position relative for any future adjustments */
+      bottom: 0;
+      /* Stick to the bottom */
+      width: 100%;
+      /* Full width */
+    }
+
+    .footer-heading {
+      font-size: 24px;
+      /* Font size for the heading */
+      margin-bottom: 10px;
+      /* Space below the heading */
+      color: #f8deb9;
+      /* Color for the heading text */
+      text-decoration: underline;
+    }
+
+    .footer-content p {
+      margin: 0;
+      /* Remove default margin */
+      font-size: 16px;
+      /* Font size */
+      line-height: 1.5;
+      /* Line height for better readability */
+    }
+
+
+    /* Responsive Design for Smaller Screens */
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns on smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        /* 1 column on very small screens */
+      }
+    }
+
+    .footer-creator {
+      margin-top: 20px;
+      /* Space above the creator text */
+      font-size: 14px;
+      /* Font size for the creator text */
+      color: #f8deb9;
+      /* Color for the creator text */
+      text-align: right;
+      /* Align text to the left */
+      padding-left: 20px;
+      /* Add some padding to the left */
+    }
+
+    .contact-info {
+      margin-top: 5px;
+      /* Space above the contact info */
+      font-size: 12px;
+      /* Font size for the contact info */
+      color: #f8deb9;
+      /* Color for the contact info */
+    }
+
+    .contact-info a {
+      color: #f8deb9;
+      /* Link color */
+      text-decoration: underline;
+      /* Underline the link */
+    }
+
+    .contact-info a:hover {
+      color: #ffffff;
+      /* Change color on hover */
+    }
+
+    @media (max-width: 768px) {
+      .event-container {
+        grid-template-columns: 1fr;
+        /* Single column on small screens */
+        margin-left: 0;
+        /* Reset margin for smaller devices */
+      }
+    }
+
+    /* Make navbar responsive */
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-top: 10px;
       }
 
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
 
-      /* Apply linear gradient to the whole page */
-      body {
-        font-family: 'Poppins', sans-serif;
-        list-style: none;
-        background: linear-gradient(to right, #D4145A, #FBB03B);
-        min-height: 100vh;
-        overflow-y: auto;
+    @media (max-width: 768px) {
+      .nav-links {
+        display: flex;
+        /* Keep flex to allow animation */
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgba(51, 51, 51, 0.9);
+        flex-direction: column;
+        width: 130px;
+        padding-right: 20px;
+        padding-left: 15px;
+        text-align: left;
+        border-radius: 5px 0 0 5px;
+        transform: translateX(200px);
+        /* Hidden to the right */
+        transition: transform 0.3s ease, visibility 0.3s ease;
+        /* Smooth slide-in and slide-out effect */
+        visibility: hidden;
+        /* Hidden by default */
       }
 
-      /* Navbar styling */
+      .nav-links.active {
+        transform: translateX(0);
+        /* Slide into view */
+        visibility: visible;
+        /* Make it visible when active */
+      }
+
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px 20px;
-        font-weight: bold;
-        font-size: 22px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.055);
-        /* Bottom shadow */
-        z-index: 1000;
-        background: linear-gradient(to right, #D4145A, #FBB03B);
+        position: relative;
+        margin-bottom: 0;
       }
 
-      .event-description {
-        z-index: 10000;
+      .navbar a {
+        margin-left: 0px;
       }
 
-      /* Space between the logo and the links */
-      .logo {
-        color: rgb(255, 255, 255);
-        font-size: 40px;
-        margin-right: 40px;
-        /* Add space between logo and links */
-        margin-left: 50px;
-        margin-top: 10px;
-      }
-
-      .logo img {
-        width: 80px;
-        /* Adjust the width as needed */
-        height: auto;
-        /* Maintain aspect ratio */
-        border-radius: 50%;
-        /* Make the image circular */
-        box-shadow: 0 0 1px rgba(255, 255, 0, 0.8), 0 0 20px rgba(255, 255, 0, 0.6), 0 0 30px rgba(255, 255, 0, 0.4);
-        /* Yellow glow effect */
-        transition: box-shadow 0.3s ease;
-        /* Smooth transition for hover effect */
-      }
-
-      .logo img:hover {
-        box-shadow: 0 0 20px rgba(255, 255, 0, 1), 0 0 30px rgba(255, 255, 0, 0.8), 0 0 40px rgba(255, 255, 0, 0.6);
-        /* Enhanced glow on hover */
-      }
-
-
-      .nav-links {
-        list-style: none;
+      .nav-links.active {
         display: flex;
+        /* Show the links when active */
       }
 
-      .nav-links li {
-        margin: 0 30px;
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        order: 3;
+        /* Move it to the end */
       }
 
+      /* Align text to the left inside the mobile navbar */
       .nav-links ul {
         display: flex;
-        list-style: none;
+        flex-direction: column;
+        align-items: flex-start;
+        /* Align the text to the left */
         padding: 0;
+        margin: 0;
       }
 
       .nav-links ul li {
-        margin-left: 20px;
+        margin: 10px 0;
+        /* Add spacing between the links */
       }
 
       .nav-links ul li a {
         color: white;
         text-decoration: none;
-      }
-
-      .hamburger {
-        display: none;
-        cursor: pointer;
-        flex-direction: column;
-        gap: 5px;
-      }
-
-      .hamburger span {
-        width: 30px;
-        height: 3px;
-        background-color: white;
-        border-radius: 5px;
-      }
-
-      .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        position: relative;
-        /* Required for pseudo-elements */
-        transition: color 0.3s ease;
-      }
-
-      .nav-links a::before {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        /* Adjust the distance below the link text */
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: white;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-      }
-
-      .nav-links a:hover {
-        background: linear-gradient(to right, #662D8C, #ED1E79);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .nav-links a:hover::before {
-        width: 100%;
-        /* Fully expand the underline */
-        left: 0;
-        /* Reset to align to the start */
-        transform: translateX(0);
-        /* Remove the centering effect */
-      }
-
-      .icons {
-        position: fixed;
-        left: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        padding: 10px;
-        z-index: 100;
-      }
-
-      .icons a {
-        color: white;
-        font-size: 30px;
-        text-decoration: none;
-        transition: color 0.3s ease, transform 0.3s ease;
-      }
-
-      .icons a:hover {
-        color: #1d1c1c;
-        transform: translateY(-5%);
-      }
-
-      .main-content {
-        display: flex;
-        /* Use flexbox for side-by-side alignment */
-        justify-content: flex-start;
-        /* Space items apart */
-        align-items: flex-start;
-        /* Align items vertically */
-        gap: 20px;
-        /* Add some space between the two elements */
-        padding: 20px;
-        position: relative;
-        margin-left: 50px;
-        margin-top: -20px;
+        padding-left: 10px;
+        /* Optional: Add padding to the left for better spacing */
       }
 
       .event-description {
-        padding: 20px;
-        margin: 100px;
-        /* Adds spacing above and below */
-        border-radius: 20px;
-        /* Optional rounded corners */
-
+        /* Prevents text from wrapping */
+        font-size: 8px;
+        /* Adjust the font size to your preference */
+        font-weight: bold;
+        /* Make it bold if desired */
+        text-align: center;
+        /* Centers the text */
+        display: none;
       }
 
       .event-description h2 {
-        font-size: 28px;
+        display: none;
+      }
+
+      .mobile-event-title {
+        display: block;
+        /* Visible in mobile view */
+        font-size: 18px;
         font-weight: bold;
+        color: white;
         text-align: center;
-        background: linear-gradient(to right, #641b95, #83224c);
-        -webkit-background-clip: text;
-        color: transparent;
-        margin-bottom: -100px;
-      }
-
-
-      .text-box {
-        flex: 1;
-        /* Allow the text box to grow */
-        padding: 20px;
-        background-color: rgba(0, 0, 0, 0.2);
-        color: #f8deb9;
-        /* Text color */
-        border-radius: 10px;
-        font-size: 30px;
-        font-weight: bold;
         margin: 0;
-        /* Remove extra margins */
-        box-sizing: border-box;
-        /* Include padding in width/height */
+        order: 2;
+        /* Center it */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
       }
 
-      .text-box,
-      .animation-placeholder {
-        flex: 1;
-        /* Equal space for both elements */
-        transform: translateY(-20px);
-        /* Move elements up by 20px */
+      .logo {
+        order: 1;
+        /* Keep the logo on the left */
       }
 
-      .text-box p {
-        font-size: 23px;
-        font-family: "Agu Display", serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings: "MORF" 0;
+
+      .icons {
+        margin-left: 0;
       }
 
-      .text-box h2 {
-        font-family: "Agu Display", serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-        font-variation-settings: "MORF" 0;
+      .header {
+        margin-bottom: 0;
       }
 
-      .text-box-container {
-        display: flex;
+      .main-content {
         flex-direction: column;
-        /* Stack items vertically */
-        flex: 1;
-        /* Allow it to grow */
+        margin-left: 20px;
+        margin-top: 30px;
+        padding-top: 0;
+      }
+
+      .text-box-container,
+      .animation-placeholder {
+        width: 100%;
+        margin-bottom: 20px;
       }
 
       .register-btn {
+        width: 100%;
         margin-top: 20px;
-        /* Add some space above the button */
       }
 
-      .logo-placeholder {
-        width: 350px;
-        height: 400px;
-        display: block;
-        margin-top: -300px;
-      }
-
-      .animation-placeholder {
-        flex: 1;
-        /* Allow video to grow to the same space as text box */
-        display: flex;
-        align-items: flex-start;
-        /* Align the video to the top */
+      .countdown-section {
+        margin-top: -40px;
       }
 
       .animation-placeholder video {
         width: 100%;
-        /* Adjust the width of the video */
-        height: 585px;
-        /* Maintain aspect ratio */
+        height: auto;
+        object-fit: contain;
+        /* Ensures the video is fully visible without cropping */
         border-radius: 10px;
-        object-fit: cover;
       }
 
-      /* Center align countdown and register button */
-      .countdown-section {
-        text-align: center;
-        margin-top: 0px;
-        padding: 20px;
-        color: wheat;
-        font-size: larger;
+      .icons {
+        position: fixed;
+        left: -7px;
+        /* Adjust the value based on your design */
+        top: 50%;
+        transform: translateY(-50%);
       }
 
-      /* Container for countdown and button */
-      .countdown-container {
-        display: flex;
-        flex-direction: column;
-        /* Stack items vertically */
-        align-items: center;
-        /* Center items horizontally */
-        gap: 20px;
-        /* Space between countdown and button */
+      .icons a {
+        margin-right: 10px;
+        /* Adjust the spacing between the icons if necessary */
       }
-
-      /* Countdown timer box */
-      .countdown {
-        background-color: rgba(0, 0, 0, 0.7);
-        /* Light black with transparency */
-        padding: 20px;
-        color: white;
-        font-size: 30px;
-        border-radius: 10px;
-        /* Rounded corners */
-        font-weight: bold;
-      }
-
-      .register-btn {
-        padding: 15px 40px;
-        /* Bigger size for the button */
-        font-family: 'Poppins', sans-serif;
-        font-size: 30px;
-        color: white;
-        background: linear-gradient(to right, #662D8C, #ED1E79);
-        /* Gradient background */
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        background-size: 200% 100%;
-        /* Increase the background size for smoother transition */
-        transition: background-position 0.6s ease, transform 0.6s ease;
-        /* Transition for background position */
-
-      }
-
-      .register-btn:hover {
-        background-position: right;
-        /* Move the background position on hover */
-        transform: scale(1.05);
-        /* Slight zoom effect on hover */
-      }
-
 
       .event-container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        /* Two columns */
-        gap: 40px;
-        /* Space between blocks */
-        padding: 50px;
-        margin-left: 40px;
-        /* Move everything to the right */
-
+        grid-template-columns: 1fr;
+        /* Single column for mobile */
+        gap: 20px;
+        /* Space between event blocks */
+        padding: 20px;
+        /* Adjust padding for mobile */
+        margin-left: 20px;
+        /* Reset margin-left */
       }
 
       .event-block {
+        transform: none;
+        /* Removed translateY to avoid overlap */
+        margin-top: 10px;
+        /* Adjust margin-top for spacing */
         background: rgba(0, 0, 0, 0.8);
-        /* Black with opacity */
+        /* Ensure background is consistent */
         color: white;
+        /* Text color */
         padding: 20px;
+        /* Consistent padding */
         border-radius: 10px;
+        /* Border radius */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        margin-top: 15px;
-        /* General margin for all blocks */
-      }
-
-      .event-block:nth-child(even) {
-        transform: translateY(110px);
-        /* Move even blocks slightly down */
+        /* Box shadow */
       }
 
       .event-block h3 {
@@ -405,647 +837,273 @@
         color: #f8deb9;
       }
 
+      .event-block:nth-child(even) {
+        transform: none;
+        /* Remove translateY for even blocks on mobile */
+      }
 
       .event-block:nth-child(odd) {
-        transform: translateY(0);
-        /* Keep even blocks aligned */
-        margin-top: 15x;
+        transform: none;
+        /* Remove transform for odd blocks on mobile */
       }
 
-      .event-block h3 {
-        margin-bottom: 10px;
-      }
-
-      .event-block p {
-        margin-bottom: 15px;
-        line-height: normal;
-      }
-
-      .register-button {
-        display: inline-block;
-        text-decoration: none;
-        padding: 10px 20px;
-        color: white;
-        background: linear-gradient(to right, #662D8C, #ED1E79);
-        /* Gradient background */
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        background-size: 200% 100%;
-        transition: background-position 0.6s ease, transform 0.6s ease;
-      }
-
-      .register-button:hover {
-        background-position: right;
-        transform: scale(1.05);
-      }
-
-      /* Gallery Section Styling */
-      #gallery-section {
-        margin-top: 50px;
-        /* Ensures spacing from previous sections */
-        padding: 50px 20px;
-        background: rgb(208, 78, 214, 0.3);
-      }
-
-      .gallery-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        text-align: center;
-
-        .gallery-container {
-          background-color: transparent;
-          /* Or match the background color of the page */
-        }
-
-      }
-
-      .gallery-container h2 {
-        margin-bottom: 30px;
-        font-size: 2rem;
-        color: rgba(255, 255, 255);
-      }
-
-      /* Gallery Grid Styling */
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-        /* Space between images */
-        justify-content: center;
-        align-items: center;
-        padding-left: 20px;
-        /* Adds space between the grid and the left edge */
-        padding-right: 20px;
-        /* Adds space between the grid and the right edge */
-      }
-
-      .gallery-item {
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .lazy-image {
-        filter: blur(10px);
-        transition: filter 0.3s ease-out;
-      }
-
-      .lazy-image:has-loaded {
-        filter: blur(0);
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      .gallery-item:hover {
-        transform: scale(1.1);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-      }
-
-      .footer {
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Light black background */
-        color: white;
-        /* Text color */
-        padding: 20px;
-        /* Padding around the content */
-        text-align: center;
-        /* Center align the text */
-        position: relative;
-        /* Position relative for any future adjustments */
-        bottom: 0;
-        /* Stick to the bottom */
-        width: 100%;
-        /* Full width */
-      }
-
-      .footer-heading {
-        font-size: 24px;
-        /* Font size for the heading */
-        margin-bottom: 10px;
-        /* Space below the heading */
-        color: #f8deb9;
-        /* Color for the heading text */
-        text-decoration: underline;
-      }
-
-      .footer-content p {
-        margin: 0;
-        /* Remove default margin */
-        font-size: 16px;
-        /* Font size */
-        line-height: 1.5;
-        /* Line height for better readability */
-      }
-
-
-      /* Responsive Design for Smaller Screens */
-      @media (max-width: 768px) {
-        .gallery-grid {
-          grid-template-columns: 1fr 1fr;
-          /* 2 columns on smaller screens */
-        }
-      }
-
-      @media (max-width: 480px) {
-        .gallery-grid {
-          grid-template-columns: 1fr;
-          /* 1 column on very small screens */
-        }
-      }
-
-      .footer-creator {
-        margin-top: 20px;
-        /* Space above the creator text */
-        font-size: 14px;
-        /* Font size for the creator text */
-        color: #f8deb9;
-        /* Color for the creator text */
-        text-align: right;
-        /* Align text to the left */
-        padding-left: 20px;
-        /* Add some padding to the left */
-      }
-
-      .contact-info {
-        margin-top: 5px;
-        /* Space above the contact info */
-        font-size: 12px;
-        /* Font size for the contact info */
-        color: #f8deb9;
-        /* Color for the contact info */
-      }
-
-      .contact-info a {
-        color: #f8deb9;
-        /* Link color */
-        text-decoration: underline;
-        /* Underline the link */
-      }
-
-      .contact-info a:hover {
-        color: #ffffff;
-        /* Change color on hover */
-      }
-
-      @media (max-width: 768px) {
-        .event-container {
-          grid-template-columns: 1fr;
-          /* Single column on small screens */
-          margin-left: 0;
-          /* Reset margin for smaller devices */
-        }
-      }
-
-      /* Make navbar responsive */
-      @media screen and (max-width: 768px) {
-        .nav-links {
-          display: block;
-          text-align: center;
-          width: 100%;
-          margin-top: 10px;
-        }
-
-        .nav-links li {
-          margin: 10px 0;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: flex;
-          /* Keep flex to allow animation */
-          position: absolute;
-          top: 60px;
-          right: 0;
-          background-color: rgba(51, 51, 51, 0.9);
-          flex-direction: column;
-          width: 130px;
-          padding-right: 20px;
-          padding-left: 15px;
-          text-align: left;
-          border-radius: 5px 0 0 5px;
-          transform: translateX(200px);
-          /* Hidden to the right */
-          transition: transform 0.3s ease, visibility 0.3s ease;
-          /* Smooth slide-in and slide-out effect */
-          visibility: hidden;
-          /* Hidden by default */
-        }
-
-        .nav-links.active {
-          transform: translateX(0);
-          /* Slide into view */
-          visibility: visible;
-          /* Make it visible when active */
-        }
-
-        .navbar a {
-          margin-left: 0px;
-        }
-
-        .nav-links.active {
-          display: flex;
-          /* Show the links when active */
-        }
-
-        .hamburger {
-          display: flex;
-          /* Show the hamburger menu icon on small screens */
-        }
-
-        /* Align text to the left inside the mobile navbar */
-        .nav-links ul {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          /* Align the text to the left */
-          padding: 0;
-          margin: 0;
-        }
-
-        .nav-links ul li {
-          margin: 10px 0;
-          /* Add spacing between the links */
-        }
-
-        .nav-links ul li a {
-          color: white;
-          text-decoration: none;
-          padding-left: 10px;
-          /* Optional: Add padding to the left for better spacing */
-        }
-
-        .event-description {
-          /* Prevents text from wrapping */
-          font-size: 8px;
-          /* Adjust the font size to your preference */
-          font-weight: bold;
-          /* Make it bold if desired */
-          text-align: center;
-          /* Centers the text */
-          margin-top: 100px;
-        }
-
-        .icons {
-          margin-left: 0;
-        }
-
-        .main-content {
-          flex-direction: column;
-          margin-left: 20px;
-        }
-
-        .text-box-container,
-        .animation-placeholder {
-          width: 100%;
-          margin-bottom: 20px;
-        }
-
-        .register-btn {
-          width: 100%;
-          margin-top: 20px;
-        }
-
-        .countdown-section {
-          margin-top: -40px;
-        }
-
-        .animation-placeholder video {
-          width: 100%;
-          height: auto;
-          object-fit: contain;
-          /* Ensures the video is fully visible without cropping */
-          border-radius: 10px;
-        }
-
-        .icons {
-          position: fixed;
-          left: -7px;
-          /* Adjust the value based on your design */
-          top: 50%;
-          transform: translateY(-50%);
-        }
-
-        .icons a {
-          margin-right: 10px;
-          /* Adjust the spacing between the icons if necessary */
-        }
-
-        .event-container {
-          display: grid;
-          grid-template-columns: 1fr;
-          /* Single column for mobile */
-          gap: 20px;
-          /* Space between event blocks */
-          padding: 20px;
-          /* Adjust padding for mobile */
-          margin-left: 20px;
-          /* Reset margin-left */
-        }
-
-        .event-block {
-          transform: none;
-          /* Removed translateY to avoid overlap */
-          margin-top: 10px;
-          /* Adjust margin-top for spacing */
-          background: rgba(0, 0, 0, 0.8);
-          /* Ensure background is consistent */
-          color: white;
-          /* Text color */
-          padding: 20px;
-          /* Consistent padding */
-          border-radius: 10px;
-          /* Border radius */
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-          /* Box shadow */
-        }
-
-        .event-block h3 {
-          margin-bottom: 10px;
-          text-decoration: wavy;
-          background: linear-gradient(to right, #daaf38, #ED1E79);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .event-block p {
-          margin-bottom: 15px;
-          color: #f8deb9;
-        }
-
-        .event-block:nth-child(even) {
-          transform: none;
-          /* Remove translateY for even blocks on mobile */
-        }
-
-        .event-block:nth-child(odd) {
-          transform: none;
-          /* Remove transform for odd blocks on mobile */
-        }
-
-      }
-
-
-
-      @media (max-width: 442px) {
-        .event-description h2 {
-          font-size: 20px;
-          /* Adjust the font size for smaller screens */
-          white-space: normal;
-          /* Allow wrapping for smaller screens */
-          line-height: 1.2;
-          /* Adjust line-height for better spacing */
-          margin-top: 10px;
-          /* Adjust the top margin for better alignment */
-        }
-
-        /* Optional: Style the text if you want to add more customization */
-        .event-description h2 {
-          word-wrap: break-word;
-          /* Allow long words to break */
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- Social Media Icons on the left side -->
-    <div class="icons">
-      <a href="https://www.instagram.com/gqc_blr/" target="_blank"><i class="ri-instagram-line"></i></a>
-      <a href="https://chat.whatsapp.com/KJMycZXjR3sCWB9r6h5OeN" target="_blank"><i class="ri-whatsapp-line"></i></a>
-    </div>
-
-    <!-- Header Section -->
-<header>
-  <nav class="navbar">
-    <a class="logo" href="#"> <!-- Change href to point to the home section -->
-      <img src="./GQC Logo (5).png" alt="Logo">
-    </a>
-    <div class="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#first-event">Register</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#footer">About</a></li>
-    </ul>
-  </nav>
-</header>
-
-<div class="event-description">
-  <h2>GITAM QUIZ CLUB Presents</h2>
-</div>
-
-<div class="main-content">
-  <div class="text-box-container">
-    <div class="text-box">
-      <h2>SOUTH INDIAN THALI 2.0</h2>
-      <br>
-      <p> Experience the vibrant culture of South Indian cinema with South Indian Thali 2.0.<br> An exciting event
-        that celebrates the magic of South Indian movies! <br>This unique gathering combines entertainment,
-        culture,<br> and fun-filled activities,<br> inspired by the most iconic elements of South Indian films.</p>
-    </div>
-    <a href="#first-event">
-      <button class="register-btn">Register Now</button>
-    </a>
-  </div>
-  <div class="animation-placeholder"><video src="./WhatsApp Video 2024-12-15 at 12.46.52_af8cf283.mp4" autoplay loop
-      muted></video>
-  </div>
-</div>
-<div class="countdown-section">
-  <h2>Countdown:</h2>
-  <div class="countdown-container">
-    <div class="countdown" id="countdown">
-      <!-- Dynamic Countdown will appear here -->
-    </div>
-  </div>
-</div>
-
-<section class="event-container">
-  <div id="first-event" class="event-block">
-    <h3>DIALOGUE DEBATE</h3>
-    <p>Participants will form teams of 2-3 members. Each team will engage in a dialogue exchange with an opposing
-      team. The objective is to maintain the dialogue without hesitation, repetition, or running out of ideas. The
-      team that falters first loses the round.</p>
-    <a href="https://forms.gle/ajmXXvoSU9tDM8UJ7" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>GUESS THE CHARACTER</h3>
-    <p>Step into the world of cinema and put your knowledge to the test in Guess the Character! In this exciting and
-      fast-paced event, participants will be shown a image of the character and your mission is simple: guess the
-      name
-      of the character!</p>
-    <a href="https://forms.gle/B94YrmMz3HL6DFT48" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>REVERSE RHYTHM</h3>
-    <p>Step into the rhythm of fun and challenge! Participate in our Reverse Rhythm Activity, test your timing and
-      memory with unique patterns, and master the beats to become a rhythm champion! Are you ready to groove?</p>
-    <a href="https://forms.gle/71UDDfA8HTGYpqMD6" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>TRAILER CUT</h3>
-    <p>Unleash your creativity and editing skills in the Trailer Cut Challenge! Participants must create a
-      captivating
-      movie trailer that captures the essence of the entire film(from only one movie). The trailer should provide an
-      engaging glimpse into the storyline, characters, and key moments, leaving viewers excited and curious
-      about the movie.</p>
-    <a href="https://forms.gle/JMdJMMX8Ju8QpBV88" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>SCRIPT WRITING</h3>
-    <p>Dive into the world of South Indian cinema with the Sequel Story Guess Challenge! In this activity,
-      participants will use their imagination and knowledge of famous South Indian movies to guess or predict the
-      sequel storyline and the short narration of the story.</p>
-    <a href="https://forms.gle/eE14CZKqcQ5rbz6c7" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>ROLEPLAY</h3>
-    <p>Participants will immerse themselves in a roleplay activity where they re-create and act out a specific scene
-      from a movie. The goal is to bring the characters to life, understand their emotions, and interpret the scene
-      creatively while staying true to the context.</p>
-    <a href="https://forms.gle/ezNbBETQ1DxiBNp19" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>MEME MASTERS</h3>
-    <p>Unleash your creativity in our meme-making competition! Design unique and entertaining memes to stand out and
-      win exciting prizes. Let the laughter begin!</p>
-    <a href="https://forms.gle/kzyCWQ3QPhnFMEPU8" target="_blank" class="register-button">Register</a>
-  </div>
-  <div class="event-block">
-    <h3>QUIZ COMPETITION</h3>
-    <p>Gear up for an exciting battle of brains! Join our Movie Quiz Competition and showcase your expertise on
-      iconic
-      films, legendary actors, and unforgettable moments from the silver screen while having loads of fun."</p>
-    <a href="https://forms.gle/Nxwxd5DyJup9p5Wt8" target="_blank" class="register-button">Register</a>
-  </div>
-</section>
-<br>
-<section id="gallery-section">
-  <div class="gallery-container" id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="./image1.jpg" alt="Gallery Image 1" rel="preload"
-          srcset="./image1.jpg 480w, ./image1.jpg 800w, ./image1.jpg 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./image2.JPG" alt="Gallery Image 2" rel="preload"
-          srcset="./image2.JPG 480w, ./image2.JPG 800w, ./image2.JPG 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img3.jpg" alt="Gallery Image 3" rel="preload"
-          srcset="./img3.jpg 480w, ./img3.jpg 800w, ./img3.jpg 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img4.jpg" alt="Gallery Image 4" rel="preload"
-          srcset="./img4.jpg 480w, ./img4.jpg 800w, ./img4.jpg 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img5.JPG" alt="Gallery Image 5" rel="preload"
-          srcset="./img5.JPG 480w, ./img5.JPG 800w, ./img5.JPG 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img6.jpg" alt="Gallery Image 6" rel="preload"
-          srcset="./img6.jpg 480w, ./img6.jpg 800w, ./img6.jpg 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img7.jpg" alt="Gallery Image 7" rel="preload"
-          srcset="./img7.jpg 480w, ./img7.jpg 800w, ./img7.jpg 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img8.jpg" alt="Gallery Image 8" rel="preload"
-          srcset="./img8.jpg 480w, ./img8.jpg 800w, ./img8.jpg 1200w" loading="lazy">
-      </div>
-      <div class="gallery-item">
-        <img src="./img9.jpg.jpg" alt="Gallery Image 9" rel="preload"
-          srcset="./img9.jpg.jpg 480w, ./img9.jpg.jpg 800w, ./img9.jpg.jpg 1200w" loading="lazy">
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<footer class="footer" id="footer">
-  <h2 class="footer-heading">About</h2>
-  <div class="footer-content">
-    <p>GITAM Quiz Club – where knowledge meets entertainment! 🎓✨ Known for its dynamic and engaging quiz events,
-      the
-      club has become the ultimate hub for trivia enthusiasts and curious minds on campus. From thought-provoking
-      quizzes to fun-filled entertainment rounds, the GITAM Quiz Club has successfully hosted numerous blockbuster
-      events, leaving participants thrilled and craving more.</p>
-  </div>
-  <div class="footer-creator">
-    <p>Designed and Developed by Abhinay Reddy</p>
-    <p class="contact-info">
-      For inquiries, contact: <a href="mailto:abhinayreddy831@gmail.com">abhinayreddy831@gmail.com</a>
-    </p>
-  </div>
-</footer>
-
-<script>
-  // Set the date we're counting down to
-  const countdownDate = new Date("Dec 26, 2024 00:00:00").getTime();
-
-  // Update the countdown every 1 second
-  const x = setInterval(function () {
-
-    // Get the current date and time
-    const now = new Date().getTime();
-
-    // Find the time difference between now and the countdown date
-    const distance = countdownDate - now;
-
-    // Calculate time components
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    // Display the result in the element with id="countdown"
-    document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-      + minutes + "m " + seconds + "s ";
-
-    // If the countdown is finished, display a message
-    if (distance < 0) {
-      clearInterval(x);
-      document.getElementById("countdown").innerHTML = "Event Started!";
     }
-  }, 1000);
 
 
-  window.onload = function () {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  };
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const navToggle = document.querySelector('.navbar');
-    const navLinks = document.querySelector('.nav-links');
+    @media (max-width: 442px) {
+      .event-description h2 {
+        font-size: 20px;
+        /* Adjust the font size for smaller screens */
+        white-space: normal;
+        /* Allow wrapping for smaller screens */
+        line-height: 1.2;
+        /* Adjust line-height for better spacing */
+        margin-top: 10px;
+        /* Adjust the top margin for better alignment */
+      }
 
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      /* Optional: Style the text if you want to add more customization */
+      .event-description h2 {
+        word-wrap: break-word;
+        /* Allow long words to break */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Social Media Icons on the left side -->
+  <div class="icons">
+    <a href="https://www.instagram.com/gqc_blr/" target="_blank"><i class="ri-instagram-line"></i></a>
+    <a href="https://chat.whatsapp.com/KJMycZXjR3sCWB9r6h5OeN" target="_blank"><i class="ri-whatsapp-line"></i></a>
+  </div>
+
+  <!-- Header Section -->
+  <header>
+    <nav class="navbar">
+      <a class="logo" href="#"> <!-- Change href to point to the home section -->
+        <img src="./GQC Logo (5).png" alt="Logo">
+      </a>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#first-event">Register</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#footer">About</a></li>
+      </ul>
+      <h2 class="mobile-event-title">GITAM QUIZ CLUB Presents</h2>
+    </nav>
+  </header>
+
+  <div class="event-description">
+    <h2>GITAM QUIZ CLUB Presents</h2>
+  </div>
+
+  <div class="main-content">
+    <div class="text-box-container">
+      <div class="text-box">
+        <h2>SOUTH INDIAN THALI 2.0</h2>
+        <br>
+        <p> Experience the vibrant culture of South Indian cinema with South Indian Thali 2.0.<br> An exciting event
+          that celebrates the magic of South Indian movies! <br>This unique gathering combines entertainment,
+          culture,<br> and fun-filled activities,<br> inspired by the most iconic elements of South Indian films.</p>
+      </div>
+      <a href="#first-event">
+        <button class="register-btn">Register Now</button>
+      </a>
+    </div>
+    <div class="animation-placeholder"><video src="./WhatsApp Video 2024-12-15 at 12.46.52_af8cf283.mp4" autoplay loop
+        muted></video>
+    </div>
+  </div>
+  <div class="countdown-section">
+    <h2>Countdown:</h2>
+    <div class="countdown-container">
+      <div class="countdown" id="countdown">
+        <!-- Dynamic Countdown will appear here -->
+      </div>
+    </div>
+  </div>
+
+  <section class="event-container">
+    <div id="first-event" class="event-block">
+      <h3>DIALOGUE DEBATE</h3>
+      <p>Participants will form teams of 2-3 members. Each team will engage in a dialogue exchange with an opposing
+        team. The objective is to maintain the dialogue without hesitation, repetition, or running out of ideas. The
+        team that falters first loses the round.</p>
+      <a href="https://forms.gle/ajmXXvoSU9tDM8UJ7" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>GUESS THE CHARACTER</h3>
+      <p>Step into the world of cinema and put your knowledge to the test in Guess the Character! In this exciting and
+        fast-paced event, participants will be shown a image of the character and your mission is simple: guess the
+        name
+        of the character!</p>
+      <a href="https://forms.gle/B94YrmMz3HL6DFT48" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>REVERSE RHYTHM</h3>
+      <p>Step into the rhythm of fun and challenge! Participate in our Reverse Rhythm Activity, test your timing and
+        memory with unique patterns, and master the beats to become a rhythm champion! Are you ready to groove?</p>
+      <a href="https://forms.gle/71UDDfA8HTGYpqMD6" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>TRAILER CUT</h3>
+      <p>Unleash your creativity and editing skills in the Trailer Cut Challenge! Participants must create a
+        captivating
+        movie trailer that captures the essence of the entire film(from only one movie). The trailer should provide an
+        engaging glimpse into the storyline, characters, and key moments, leaving viewers excited and curious
+        about the movie.</p>
+      <a href="https://forms.gle/JMdJMMX8Ju8QpBV88" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>SCRIPT WRITING</h3>
+      <p>Dive into the world of South Indian cinema with the Sequel Story Guess Challenge! In this activity,
+        participants will use their imagination and knowledge of famous South Indian movies to guess or predict the
+        sequel storyline and the short narration of the story.</p>
+      <a href="https://forms.gle/eE14CZKqcQ5rbz6c7" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>ROLEPLAY</h3>
+      <p>Participants will immerse themselves in a roleplay activity where they re-create and act out a specific scene
+        from a movie. The goal is to bring the characters to life, understand their emotions, and interpret the scene
+        creatively while staying true to the context.</p>
+      <a href="https://forms.gle/ezNbBETQ1DxiBNp19" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>MEME MASTERS</h3>
+      <p>Unleash your creativity in our meme-making competition! Design unique and entertaining memes to stand out and
+        win exciting prizes. Let the laughter begin!</p>
+      <a href="https://forms.gle/kzyCWQ3QPhnFMEPU8" target="_blank" class="register-button">Register</a>
+    </div>
+    <div class="event-block">
+      <h3>QUIZ COMPETITION</h3>
+      <p>Gear up for an exciting battle of brains! Join our Movie Quiz Competition and showcase your expertise on
+        iconic
+        films, legendary actors, and unforgettable moments from the silver screen while having loads of fun."</p>
+      <a href="https://forms.gle/Nxwxd5DyJup9p5Wt8" target="_blank" class="register-button">Register</a>
+    </div>
+  </section>
+  <br>
+  <section id="gallery-section">
+    <div class="gallery-container" id="gallery">
+      <h2>Gallery</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="./image1.jpg" alt="Gallery Image 1" rel="preload"
+            srcset="./image1.jpg 480w, ./image1.jpg 800w, ./image1.jpg 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./image2.JPG" alt="Gallery Image 2" rel="preload"
+            srcset="./image2.JPG 480w, ./image2.JPG 800w, ./image2.JPG 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img3.jpg" alt="Gallery Image 3" rel="preload"
+            srcset="./img3.jpg 480w, ./img3.jpg 800w, ./img3.jpg 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img4.jpg" alt="Gallery Image 4" rel="preload"
+            srcset="./img4.jpg 480w, ./img4.jpg 800w, ./img4.jpg 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img5.JPG" alt="Gallery Image 5" rel="preload"
+            srcset="./img5.JPG 480w, ./img5.JPG 800w, ./img5.JPG 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img6.jpg" alt="Gallery Image 6" rel="preload"
+            srcset="./img6.jpg 480w, ./img6.jpg 800w, ./img6.jpg 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img7.jpg" alt="Gallery Image 7" rel="preload"
+            srcset="./img7.jpg 480w, ./img7.jpg 800w, ./img7.jpg 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img8.jpg" alt="Gallery Image 8" rel="preload"
+            srcset="./img8.jpg 480w, ./img8.jpg 800w, ./img8.jpg 1200w" loading="lazy">
+        </div>
+        <div class="gallery-item">
+          <img src="./img9.jpg.jpg" alt="Gallery Image 9" rel="preload"
+            srcset="./img9.jpg.jpg 480w, ./img9.jpg.jpg 800w, ./img9.jpg.jpg 1200w" loading="lazy">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="footer">
+    <h2 class="footer-heading">About</h2>
+    <div class="footer-content">
+      <p>GITAM Quiz Club – where knowledge meets entertainment! 🎓✨ Known for its dynamic and engaging quiz events,
+        the
+        club has become the ultimate hub for trivia enthusiasts and curious minds on campus. From thought-provoking
+        quizzes to fun-filled entertainment rounds, the GITAM Quiz Club has successfully hosted numerous blockbuster
+        events, leaving participants thrilled and craving more.</p>
+    </div>
+    <div class="footer-creator">
+      <p>Designed and Developed by Abhinay Reddy</p>
+      <p class="contact-info">
+        For inquiries, contact: <a href="mailto:abhinayreddy831@gmail.com">abhinayreddy831@gmail.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Set the date we're counting down to
+    const countdownDate = new Date("Dec 26, 2024 00:00:00").getTime();
+
+    // Update the countdown every 1 second
+    const x = setInterval(function () {
+
+      // Get the current date and time
+      const now = new Date().getTime();
+
+      // Find the time difference between now and the countdown date
+      const distance = countdownDate - now;
+
+      // Calculate time components
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="countdown"
+      document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      // If the countdown is finished, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Event Started!";
+      }
+    }, 1000);
+
+
+    window.onload = function () {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('.navbar');
+      const navLinks = document.querySelector('.nav-links');
+
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
     });
-  });
 
-  document.querySelector('.hamburger').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('show');
-  });
-  const images = document.querySelectorAll('.lazy-image');
-  images.forEach(img => {
-    img.addEventListener('load', () => {
-      img.classList.add('has-loaded');
+    document.querySelector('.hamburger').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('show');
     });
-  });
+    const images = document.querySelectorAll('.lazy-image');
+    images.forEach(img => {
+      img.addEventListener('load', () => {
+        img.classList.add('has-loaded');
+      });
+    });
 
-</script>
+  </script>
