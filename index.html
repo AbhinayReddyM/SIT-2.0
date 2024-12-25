@@ -1062,7 +1062,7 @@
 
   <script>
     // Set the date we're counting down to
-    const countdownDate = new Date("Jan 25, 2024 00:00:00").getTime();
+    const countdownDate = new Date("Jan 25, 2025 00:00:00").getTime();
 
     // Update the countdown every 1 second
     const x = setInterval(function () {
@@ -1082,7 +1082,9 @@
       // Display the result in the element with id="countdown"
       document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
         + minutes + "m " + seconds + "s ";
-
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "Event Started!";
       // If the countdown is finished, display a message
       
     }, 1000);
