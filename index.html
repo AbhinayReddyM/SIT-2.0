@@ -850,8 +850,9 @@ body {
     .main-content {
         flex-direction: column;
         margin-left: 20px;
-        margin-top: 50px;
+        margin-top: 120px;
         padding-top: 0;
+      
     }
 
     .text-box-container,
@@ -869,20 +870,7 @@ body {
         margin-top: -40px;
     }
 
-    .animation-placeholder video {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-        /* Ensures the video is fully visible without cropping */
-        border-radius: 10px;
-
-    }
-
-    .animation-placeholder {
-        position: relative;
-        top: 100px;
-        right: 80px;
-    }
+    
 
     .animation-placeholder {
         display: none;
@@ -890,14 +878,19 @@ body {
     }
 
     .video-mobile {
-        display:block;
-        /* Show mobile video */
-        width: 350px;
-        height: 400px;
-        margin-left: 40px;
-        margin-right: 10px;
-        border-radius: 7px;
-    }
+    display: block !important; /* Ensure it overrides other styles */
+    width: 90%; /* Responsive width */
+    max-width: 330px;
+    height: auto;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    border-radius: 7px; /* Ensure all corners are rounded */
+    overflow: hidden; /* Enforce border-radius clipping */
+    position: relative;
+    top: 110px;
+    padding-top: 0; /* Remove padding-top */
+}
+
 
     .icons {
         position: fixed;
