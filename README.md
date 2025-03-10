@@ -18,4 +18,4 @@ License
 This project is licensed under the MIT License.
 
 Contact
-For queries, reach out via [your contact email or GitHub profile]
+For queries, reach out via [abhinayreddy831@gmail.com or GitHub profile]
